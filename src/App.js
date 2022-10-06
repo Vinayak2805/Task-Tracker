@@ -22,10 +22,15 @@ function App() {
         reminder: false,
     },
 ])
+
+  const deleteTask = (id) =>{
+    setTasks(tasks.filter((task) => task.id !==id))
+    console.log("Deleted","task no.", id);
+  }
   return (
     <div className="container">
       <Header title="Task Tracker"/>
-      <Tasks tasks={tasks}/>
+      {tasks.length>0 ?<Tasks tasks={tasks} delete={deleteTask}/> : "Click on Add to add a new task"}
     </div>
   );
 }
